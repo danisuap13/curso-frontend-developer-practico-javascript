@@ -30,28 +30,6 @@ function toggleCarritoMenu(){
     shoppingCart.classList.toggle('inactive');
 }
 
-const productList = [];
-productList.push ({
-    name: 'Bike',
-    price: 120,
-    image: "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-});
-productList.push ({
-    name: 'Screen',
-    price: 120,
-    image: "https://images.pexels.com/photos/1029757/pexels-photo-1029757.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-});
-productList.push ({
-    name: 'Compu',
-    price: 300,
-    image: "https://media.istockphoto.com/id/1389603578/es/foto/pantalla-en-blanco-de-la-computadora-port%C3%A1til-en-la-mesa-de-madera-con-fondo-interior-de.jpg?s=612x612&w=is&k=20&c=It8bdNPAR-pIBEzDvWO4WwDpV9ptcjDGde2nTvl4b6g=",
-});
-productList.push ({
-    name: 'Skate',
-    price: 20,
-    image: "https://media.istockphoto.com/id/500062008/es/foto/ni%C3%B1o-sentado-en-la-rampa-hacia-abajo-en-monopat%C3%ADn.jpg?s=612x612&w=is&k=20&c=-LTCYPfTPQnrqrFq8KuH7o2Po3SpHg1oD1gI8sFrYfw=",
-});
-
 function renderProducts(arr){
     
     for(product of productList){
@@ -83,5 +61,47 @@ function renderProducts(arr){
     cardsContainer.appendChild(productCard);
     }   
 }
+
+const productList = [];
+productList.push ({
+    name: 'Bike',
+    price: 120,
+    image: "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+});
+productList.push ({
+    name: 'Screen',
+    price: 120,
+    image: "https://images.pexels.com/photos/1029757/pexels-photo-1029757.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+});
+productList.push ({
+    name: 'Computer',
+    price: 300,
+    image: "https://media.istockphoto.com/id/1389603578/es/foto/pantalla-en-blanco-de-la-computadora-port%C3%A1til-en-la-mesa-de-madera-con-fondo-interior-de.jpg?s=612x612&w=is&k=20&c=It8bdNPAR-pIBEzDvWO4WwDpV9ptcjDGde2nTvl4b6g=",
+});
+productList.push ({
+    name: 'Skate',
+    price: 20,
+    image: "https://media.istockphoto.com/id/500062008/es/foto/ni%C3%B1o-sentado-en-la-rampa-hacia-abajo-en-monopat%C3%ADn.jpg?s=612x612&w=is&k=20&c=-LTCYPfTPQnrqrFq8KuH7o2Po3SpHg1oD1gI8sFrYfw=",
+});
+productList.push ({
+    name: 'Bike',
+    price: 120,
+    image: "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+});
+productList.push ({
+    name: 'Screen',
+    price: 120,
+    image: "https://images.pexels.com/photos/1029757/pexels-photo-1029757.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+});
+productList.push ({
+    name: 'Computer',
+    price: 300,
+    image: "https://media.istockphoto.com/id/1389603578/es/foto/pantalla-en-blanco-de-la-computadora-port%C3%A1til-en-la-mesa-de-madera-con-fondo-interior-de.jpg?s=612x612&w=is&k=20&c=It8bdNPAR-pIBEzDvWO4WwDpV9ptcjDGde2nTvl4b6g=",
+});
+productList.push ({
+    name: 'Skate',
+    price: 20,
+    image: "https://media.istockphoto.com/id/500062008/es/foto/ni%C3%B1o-sentado-en-la-rampa-hacia-abajo-en-monopat%C3%ADn.jpg?s=612x612&w=is&k=20&c=-LTCYPfTPQnrqrFq8KuH7o2Po3SpHg1oD1gI8sFrYfw=",
+});
 
 renderProducts(productList);
