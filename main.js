@@ -3,6 +3,7 @@ const desktopMenu = document.querySelector('.desktop-menu');
 const menuHamIcon = document.querySelector('.menu');
 const menuCarritoIcon = document.querySelector('.navbar-shopping-cart');
 const productDetailCloseIcon = document.querySelector('.product-detail-secondary-close')
+const shoppingCartCloseIcon = document.querySelector('.title-container img')
 const mobileMenu = document.querySelector('.mobile-menu');
 const shoppingCart = document.querySelector('.product-detail');
 const productDetailContainer = document.querySelector('.product-detail-secondary');
@@ -12,6 +13,7 @@ menuEmail.addEventListener('click', toggleDesktopMenu);
 menuHamIcon.addEventListener('click',toggleMobileMenu );
 menuCarritoIcon.addEventListener('click', toggleCarritoMenu);
 productDetailCloseIcon.addEventListener('click',closeProductDetailAside);
+shoppingCartCloseIcon.addEventListener('click', closeShoppingCart);
 
 function toggleDesktopMenu(){
     const isShoppingCartClosed = !shoppingCart.classList.contains('inactive');
@@ -78,6 +80,11 @@ function openProductDetailAside(){
 function closeProductDetailAside(){
     productDetailContainer.classList.add('inactive');
 }
+
+function closeShoppingCart(){
+    shoppingCart.classList.add('inactive');
+}
+
 const productList = [];
 productList.push ({
     name: 'Bike',
@@ -99,6 +106,5 @@ productList.push ({
     price: 20,
     image: "https://media.istockphoto.com/id/500062008/es/foto/ni%C3%B1o-sentado-en-la-rampa-hacia-abajo-en-monopat%C3%ADn.jpg?s=612x612&w=is&k=20&c=-LTCYPfTPQnrqrFq8KuH7o2Po3SpHg1oD1gI8sFrYfw=",
 });
-
 
 renderProducts(productList);
