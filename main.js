@@ -8,12 +8,20 @@ const mobileMenu = document.querySelector('.mobile-menu');
 const shoppingCart = document.querySelector('.product-detail');
 const productDetailContainer = document.querySelector('.product-detail-secondary');
 const cardsContainer = document.querySelector('.cards-container');
+const categoryAll = document.getElementById('all');
+const categoryClothes = document.getElementById('clothes');
+const categoryElectronics = document.getElementById('electronics');
+const categoryFurnitures = document.getElementById('furnitures');
+const categoryOthers = document.getElementById('others');
+const categoryToys = document.getElementById('toys');
+
 
 menuEmail.addEventListener('click', toggleDesktopMenu);
 menuHamIcon.addEventListener('click',toggleMobileMenu );
 menuCarritoIcon.addEventListener('click', toggleCarritoMenu);
 productDetailCloseIcon.addEventListener('click',closeProductDetailAside);
 shoppingCartCloseIcon.addEventListener('click', closeShoppingCart);
+
 
 function toggleDesktopMenu(){
     const isShoppingCartClosed = !shoppingCart.classList.contains('inactive');
@@ -40,7 +48,7 @@ function toggleCarritoMenu(){
 
 function renderProducts(arr){
     
-    for(product of productList){
+    for(product of arr){
     const productCard = document.createElement('div');
     productCard.classList.add('product-card');
 
@@ -87,24 +95,49 @@ function closeShoppingCart(){
 
 const productList = [];
 productList.push ({
-    name: 'Bike',
+    category: 'toys', name: 'Bike',
     price: 30,
     image: "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
 });
 productList.push ({
-    name: 'Screen',
+    category: 'electronics', name: 'Screen',
     price: 120,
     image: "https://images.pexels.com/photos/1029757/pexels-photo-1029757.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
 });
 productList.push ({
-    name: 'Computer',
+    category: 'electronics', name: 'Computer',
     price: 300,
     image: "https://media.istockphoto.com/id/1389603578/es/foto/pantalla-en-blanco-de-la-computadora-port%C3%A1til-en-la-mesa-de-madera-con-fondo-interior-de.jpg?s=612x612&w=is&k=20&c=It8bdNPAR-pIBEzDvWO4WwDpV9ptcjDGde2nTvl4b6g=",
 });
 productList.push ({
-    name: 'Skate',
+    category: 'toys', name: 'Skate',
+    price: 20,
+    image: "https://media.istockphoto.com/id/500062008/es/foto/ni%C3%B1o-sentado-en-la-rampa-hacia-abajo-en-monopat%C3%ADn.jpg?s=612x612&w=is&k=20&c=-LTCYPfTPQnrqrFq8KuH7o2Po3SpHg1oD1gI8sFrYfw=",
+});
+productList.push ({
+    category: 'clothes', name: 'Jacket',
+    price: 20,
+    image: "https://media.istockphoto.com/id/500062008/es/foto/ni%C3%B1o-sentado-en-la-rampa-hacia-abajo-en-monopat%C3%ADn.jpg?s=612x612&w=is&k=20&c=-LTCYPfTPQnrqrFq8KuH7o2Po3SpHg1oD1gI8sFrYfw=",
+});
+productList.push ({
+    category: 'furnitures', name: 'Sofa',
     price: 20,
     image: "https://media.istockphoto.com/id/500062008/es/foto/ni%C3%B1o-sentado-en-la-rampa-hacia-abajo-en-monopat%C3%ADn.jpg?s=612x612&w=is&k=20&c=-LTCYPfTPQnrqrFq8KuH7o2Po3SpHg1oD1gI8sFrYfw=",
 });
 
-renderProducts(productList);
+renderProducts(productList)
+
+let filteredProductList = [...productList];
+const filterProductList = (categoria) => {
+    if(categoria == 'all' ){
+        while (cardsContainer.firstChild) {
+            cardsContainer.removeChild(cardsContainer.firstChild);
+        }
+        return renderProducts(productList);
+    }
+        filteredProductList = productList.filter((product) => product.category.includes(categoria));
+        while (cardsContainer.firstChild) {
+            cardsContainer.removeChild(cardsContainer.firstChild);
+        }
+        renderProducts(filteredProductList); 
+    };
