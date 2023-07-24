@@ -141,3 +141,8 @@ const filterProductList = (categoria) => {
         }
         renderProducts(filteredProductList); 
     };
+
+const filterProductListMobile = (categoria) => {
+    mobileMenu.classList.toggle('inactive');
+    filterProductList(categoria);
+}
