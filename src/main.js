@@ -48,15 +48,14 @@ function toggleCarritoMenu(){
 }
 
 function renderProducts(arr){
-    
     for(product of arr){
     const productCard = document.createElement('div');
     productCard.classList.add('product-card');
-
+        
     const img = document.createElement('img');
     img.setAttribute('src', product.image);
-    img.addEventListener('click', openProductDetailAside);
-    
+    productCard.setAttribute('onclick', `openProductDetailAside("${product.name}")`);
+   
     const productInfo = document.createElement('div');
     productInfo.classList.add('product-info');
     
@@ -72,18 +71,34 @@ function renderProducts(arr){
     const productImgCart = document.createElement('img');
     productImgCart.setAttribute('src','./icons/bt_add_to_cart.svg');
     
+    
     productCard.append(img, productInfo);
     productInfo.append(productInfoDiv,productInfoFigure);
     productInfoFigure.append(productImgCart);
     productInfoDiv.append(productPrice, productName);
     cardsContainer.appendChild(productCard);
+    
     }   
 }
 
-function openProductDetailAside(){
+function renderSecondaryProductDetail(productName){
+    let productDescription;
+    for(item of filteredProductList){
+        if(item.name === productName){
+            productDescription = item;
+        }
+    }
+    console.log(productDescription.image)
+    const productImage = document.createElement('img');
+    productImage.setAttribute('src', productDescription.image);
+    productDetailContainer.append(productImage);
+}
+
+function openProductDetailAside(name){
     const isShoppingCartClosed = !shoppingCart.classList.contains('inactive');
     if(isShoppingCartClosed) shoppingCart.classList.add('inactive');
-    productDetailContainer.classList.remove('inactive')
+    productDetailContainer.classList.remove('inactive');
+    renderSecondaryProductDetail(name);
 }
 
 function closeProductDetailAside(){
@@ -147,3 +162,4 @@ const filterProductListMobile = (categoria) => {
     mobileMenu.classList.toggle('inactive');
     filterProductList(categoria);
 }
+
