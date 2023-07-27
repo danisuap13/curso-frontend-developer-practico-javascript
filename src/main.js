@@ -3,7 +3,8 @@ const desktopMenu = document.querySelector('.desktop-menu');
 const menuHamIcon = document.querySelector('.menu');
 const menuCarritoIcon = document.querySelector('.navbar-shopping-cart');
 const productDetailCloseIcon = document.querySelector('.product-detail-secondary-close')
-const shoppingCartCloseIcon = document.querySelector('.title-container img')
+const shoppingCartCloseIcon = document.querySelector('.title-container img');
+const productInfoSecondary = document.querySelector('.product-info-secondary')
 const mobileMenu = document.querySelector('.mobile-menu');
 const shoppingCart = document.querySelector('.product-detail');
 const productDetailContainer = document.querySelector('.product-detail-secondary');
@@ -91,7 +92,8 @@ function renderSecondaryProductDetail(productName){
     console.log(productDescription.image)
     const productImage = document.createElement('img');
     productImage.setAttribute('src', productDescription.image);
-    productDetailContainer.append(productImage);
+    /* productDetailContainer.append(productImage); */
+    productDetailContainer.insertBefore(productImage, productInfoSecondary)
 }
 
 function openProductDetailAside(name){
