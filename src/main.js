@@ -16,6 +16,9 @@ const categoryElectronics = document.getElementById('electronics');
 const categoryFurnitures = document.getElementById('furnitures');
 const categoryOthers = document.getElementById('others');
 const categoryToys = document.getElementById('toys');
+const myOrderContent = document.querySelector('.my-order-content')
+const order = document.querySelector('.order')
+
 
 
 menuEmail.addEventListener('click', toggleDesktopMenu);
@@ -56,7 +59,7 @@ function renderProducts(arr){
         
     const img = document.createElement('img');
     img.setAttribute('src', product.image);
-    productCard.setAttribute('onclick', `openProductDetailAside("${product.name}")`);
+    img.setAttribute('onclick', `openProductDetailAside("${product.name}")`);
    
     const productInfo = document.createElement('div');
     productInfo.classList.add('product-info');
@@ -72,6 +75,7 @@ function renderProducts(arr){
     const productInfoFigure = document.createElement('figure');
     const productImgCart = document.createElement('img');
     productImgCart.setAttribute('src','./icons/bt_add_to_cart.svg');
+    productImgCart.setAttribute('onclick', `addItemToCart("${product.name}")`)
     
     
     productCard.append(img, productInfo);
@@ -81,6 +85,39 @@ function renderProducts(arr){
     cardsContainer.appendChild(productCard);
     
     }   
+}
+
+function addItemToCart(productName){
+    let productDescriptionObject;
+    for(item of filteredProductList){
+        if(item.name === productName){
+            productDescriptionObject = item;
+        }
+    }
+    
+    const shoppingCartProduct = document.createElement('div');
+    shoppingCartProduct.classList.add('shopping-cart');
+
+    const shoppingCartProductFigure = document.createElement('figure');
+        const shoppingCartProductImg = document.createElement('img');
+        shoppingCartProductImg.setAttribute('src', productDescriptionObject.image)
+        shoppingCartProductImg.setAttribute('alt', productDescriptionObject.name)
+
+    const shoppingCartName = document.createElement('p');
+    shoppingCartName.innerText = productDescriptionObject.name;
+    const shoppingCartPrice = document.createElement('p');
+    shoppingCartPrice.innerText = `$${productDescriptionObject.price}`;
+
+    const shoppingCartDelete = document.createElement('img')
+    shoppingCartDelete.setAttribute('src', './icons/icon_close.png')
+    shoppingCartDelete.setAttribute('onclick', 'console.log("hola")')
+
+    myOrderContent.appendChild(shoppingCartProduct)
+    shoppingCartProductFigure.appendChild(shoppingCartProductImg)
+    shoppingCartProduct.appendChild(shoppingCartProductFigure)
+    shoppingCartProduct.appendChild(shoppingCartName)
+    shoppingCartProduct.appendChild(shoppingCartPrice)
+    shoppingCartProduct.appendChild(shoppingCartDelete)
 }
 
 function renderSecondaryProductDetail(productName){
