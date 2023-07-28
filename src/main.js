@@ -4,7 +4,7 @@ const menuHamIcon = document.querySelector('.menu');
 const menuCarritoIcon = document.querySelector('.navbar-shopping-cart');
 const productDetailCloseIcon = document.querySelector('.product-detail-secondary-close')
 const shoppingCartCloseIcon = document.querySelector('.title-container img');
-const productInfoSecondary = document.querySelector('.product-info-secondary')
+const productInfoSecondary = document.querySelector('.product-info-secondary');
 const mobileMenu = document.querySelector('.mobile-menu');
 const shoppingCart = document.querySelector('.product-detail');
 const productDetailContainer = document.querySelector('.product-detail-secondary');
@@ -49,6 +49,7 @@ function toggleCarritoMenu(){
 }
 
 function renderProducts(arr){
+
     for(product of arr){
     const productCard = document.createElement('div');
     productCard.classList.add('product-card');
@@ -83,6 +84,7 @@ function renderProducts(arr){
 }
 
 function renderSecondaryProductDetail(productName){
+    const imgSecondary = document.querySelector('.product-detail-secondary > img:nth-child(2)')
     let productDescription;
     for(item of filteredProductList){
         if(item.name === productName){
@@ -92,8 +94,13 @@ function renderSecondaryProductDetail(productName){
     console.log(productDescription.image)
     const productImage = document.createElement('img');
     productImage.setAttribute('src', productDescription.image);
-    /* productDetailContainer.append(productImage); */
-    productDetailContainer.insertBefore(productImage, productInfoSecondary)
+    productImage.setAttribute('alt', `${productDescription.name}`)
+    console.log(productImage)
+    /* productDetailContainer.append(productImage);
+    const productSecondaryInfoContent = document.createElement('p');
+    productSecondaryInfoContent.innerText = `$${productDescription.price}`;
+    productDetailContainer.insertBefore(productImage, productInfoSecondary) */
+    productDetailContainer.replaceChild(productImage, imgSecondary);
 }
 
 function openProductDetailAside(name){
