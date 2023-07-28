@@ -135,7 +135,7 @@ function closeShoppingCart(){
 const productList = [];
 productList.push ({
     category: 'toys', name: 'Bike',
-    price: 30,
+    price: 130,
     image: "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
 });
 productList.push ({
@@ -144,24 +144,24 @@ productList.push ({
     image: "https://images.pexels.com/photos/1029757/pexels-photo-1029757.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
 });
 productList.push ({
-    category: 'electronics', name: 'Computer',
+    category: 'electronics', name: 'Portatil',
     price: 300,
-    image: "https://media.istockphoto.com/id/1389603578/es/foto/pantalla-en-blanco-de-la-computadora-port%C3%A1til-en-la-mesa-de-madera-con-fondo-interior-de.jpg?s=612x612&w=is&k=20&c=It8bdNPAR-pIBEzDvWO4WwDpV9ptcjDGde2nTvl4b6g=",
+    image: "https://images.pexels.com/photos/4058226/pexels-photo-4058226.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
 });
 productList.push ({
     category: 'toys', name: 'Skate',
     price: 20,
-    image: "https://media.istockphoto.com/id/500062008/es/foto/ni%C3%B1o-sentado-en-la-rampa-hacia-abajo-en-monopat%C3%ADn.jpg?s=612x612&w=is&k=20&c=-LTCYPfTPQnrqrFq8KuH7o2Po3SpHg1oD1gI8sFrYfw=",
+    image: "https://images.pexels.com/photos/1373085/pexels-photo-1373085.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
 });
 productList.push ({
     category: 'clothes', name: 'Jacket',
-    price: 20,
-    image: "https://media.istockphoto.com/id/500062008/es/foto/ni%C3%B1o-sentado-en-la-rampa-hacia-abajo-en-monopat%C3%ADn.jpg?s=612x612&w=is&k=20&c=-LTCYPfTPQnrqrFq8KuH7o2Po3SpHg1oD1gI8sFrYfw=",
+    price: 50,
+    image: "https://images.pexels.com/photos/887898/pexels-photo-887898.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
 });
 productList.push ({
     category: 'furnitures', name: 'Sofa',
-    price: 20,
-    image: "https://media.istockphoto.com/id/500062008/es/foto/ni%C3%B1o-sentado-en-la-rampa-hacia-abajo-en-monopat%C3%ADn.jpg?s=612x612&w=is&k=20&c=-LTCYPfTPQnrqrFq8KuH7o2Po3SpHg1oD1gI8sFrYfw=",
+    price: 280,
+    image: "https://images.pexels.com/photos/3965534/pexels-photo-3965534.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
 });
 
 renderProducts(productList)
