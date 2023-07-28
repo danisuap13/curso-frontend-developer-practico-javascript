@@ -108,7 +108,7 @@ function addItemToCart(productName){
     const shoppingCartName = document.createElement('p');
     shoppingCartName.innerText = productDescriptionObject.name;
     const shoppingCartPrice = document.createElement('p');
-    shoppingCartPrice.innerText = `$${productDescriptionObject.price}`;
+    shoppingCartPrice.innerText = `$${productDescriptionObject.price},00`;
 
     const shoppingCartDelete = document.createElement('img')
     shoppingCartDelete.setAttribute('src', './icons/icon_close.png')
@@ -126,7 +126,7 @@ function addItemToCart(productName){
     const total = totalShoppingCart.reduce((valorAnterior, valorActual) => valorAnterior + valorActual, 0)
     const displayTotal = document.createElement('p');
     displayTotal.setAttribute('id', 'total')
-    displayTotal.innerText = `$${total}`
+    displayTotal.innerText = `$${total},00`
     order.replaceChild(displayTotal, shoppingCartTotalContainer);
 }
 
