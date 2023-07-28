@@ -18,6 +18,8 @@ const categoryOthers = document.getElementById('others');
 const categoryToys = document.getElementById('toys');
 const myOrderContent = document.querySelector('.my-order-content')
 const order = document.querySelector('.order')
+const addToCartSecondary = document.querySelector('#add-to-cart-secondary-button')
+
 
 
 menuEmail.addEventListener('click', toggleDesktopMenu);
@@ -47,7 +49,7 @@ function toggleCarritoMenu(){
     if(isMobileMenuClosed) mobileMenu.classList.add('inactive');
     if(isDesktopMenuClosed) desktopMenu.classList.add('inactive');
     if(isProductDetailAsideClosed) productDetailContainer.classList.add('inactive');
-    shoppingCart.classList.toggle('inactive');
+    shoppingCart.classList.toggle('inactive');    
 }
 
 function renderProducts(arr){
@@ -82,7 +84,7 @@ function renderProducts(arr){
     productInfoFigure.append(productImgCart);
     productInfoDiv.append(productPrice, productName);
     cardsContainer.appendChild(productCard);
-    
+   
     }   
 }
 
@@ -128,6 +130,15 @@ function addItemToCart(productName){
     displayTotal.setAttribute('id', 'total')
     displayTotal.innerText = `$${total},00`
     order.replaceChild(displayTotal, shoppingCartTotalContainer);
+
+    const shoppingCartCounterContainer = document.querySelector('.navbar-shopping-cart')
+    const shoppingCartCounter = document.querySelector('.navbar-shopping-cart div');
+    const totalItems = `${totalShoppingCart.length}`;
+    const totalItemsIcon = document.createElement('div');
+    totalItemsIcon.innerText = totalItems;
+    shoppingCartCounterContainer.replaceChild(totalItemsIcon, shoppingCartCounter)
+    totalItemsIcon.setAttribute = ('id', 'shopping-cart-counter')
+
 }
 
 function renderSecondaryProductDetail(productName){
@@ -162,6 +173,9 @@ function renderSecondaryProductDetail(productName){
     productInfoSecondary.replaceChild(productPriceSecondary, secondaryPrice);
     productInfoSecondary.replaceChild(productNameSecondary, secondaryName);
     productInfoSecondary.replaceChild(productDescriptionSecondary, secondaryDescription);
+
+    addToCartSecondary.setAttribute('onclick', `addItemToCart("${productDescription.name}")`)
+
 }
 
 function openProductDetailAside(name){
