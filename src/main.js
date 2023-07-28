@@ -20,7 +20,6 @@ const myOrderContent = document.querySelector('.my-order-content')
 const order = document.querySelector('.order')
 
 
-
 menuEmail.addEventListener('click', toggleDesktopMenu);
 menuHamIcon.addEventListener('click',toggleMobileMenu );
 menuCarritoIcon.addEventListener('click', toggleCarritoMenu);
@@ -87,7 +86,10 @@ function renderProducts(arr){
     }   
 }
 
+let totalShoppingCart = [];
+
 function addItemToCart(productName){
+    const shoppingCartTotalContainer = document.querySelector('#total')
     let productDescriptionObject;
     for(item of filteredProductList){
         if(item.name === productName){
@@ -118,6 +120,14 @@ function addItemToCart(productName){
     shoppingCartProduct.appendChild(shoppingCartName)
     shoppingCartProduct.appendChild(shoppingCartPrice)
     shoppingCartProduct.appendChild(shoppingCartDelete)
+
+    totalShoppingCart.push(productDescriptionObject.price)
+    
+    const total = totalShoppingCart.reduce((valorAnterior, valorActual) => valorAnterior + valorActual, 0)
+    const displayTotal = document.createElement('p');
+    displayTotal.setAttribute('id', 'total')
+    displayTotal.innerText = `$${total}`
+    order.replaceChild(displayTotal, shoppingCartTotalContainer);
 }
 
 function renderSecondaryProductDetail(productName){
