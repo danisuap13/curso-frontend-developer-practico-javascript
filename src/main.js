@@ -162,11 +162,14 @@ productList.push ({
     category: 'furnitures', name: 'Sofa',
     price: 280,
     image: "https://images.pexels.com/photos/3965534/pexels-photo-3965534.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+<<<<<<< HEAD
 });
 productList.push ({
     category: 'others', name: 'Piano',
     price: 500,
     image: "https://images.pexels.com/photos/1021142/pexels-photo-1021142.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+=======
+>>>>>>> 4e5ba0e3fa1e6eb19ac6f261761ea29b979c975c
 });
 
 renderProducts(productList)
