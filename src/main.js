@@ -84,23 +84,37 @@ function renderProducts(arr){
 }
 
 function renderSecondaryProductDetail(productName){
-    const imgSecondary = document.querySelector('.product-detail-secondary > img:nth-child(2)')
+    const imgSecondary = document.querySelector('.product-detail-secondary > img:nth-child(2)');
+    const secondaryPrice = document.querySelector('#secondary-price');
+    const secondaryName = document.querySelector('#secondary-name');
+    const secondaryDescription = document.querySelector('#secondary-description');
+
     let productDescription;
     for(item of filteredProductList){
         if(item.name === productName){
             productDescription = item;
         }
     }
-    console.log(productDescription.image)
-    const productImage = document.createElement('img');
-    productImage.setAttribute('src', productDescription.image);
-    productImage.setAttribute('alt', `${productDescription.name}`)
-    console.log(productImage)
-    /* productDetailContainer.append(productImage);
-    const productSecondaryInfoContent = document.createElement('p');
-    productSecondaryInfoContent.innerText = `$${productDescription.price}`;
-    productDetailContainer.insertBefore(productImage, productInfoSecondary) */
-    productDetailContainer.replaceChild(productImage, imgSecondary);
+    const productImageSecondary = document.createElement('img');
+    productImageSecondary.setAttribute('src', productDescription.image);
+    productImageSecondary.setAttribute('alt', `${productDescription.name}`);
+
+    const productPriceSecondary = document.createElement('p');
+    productPriceSecondary.setAttribute('id', 'secondary-price');
+    productPriceSecondary.innerText = `$${productDescription.price}`;
+    
+    const productNameSecondary = document.createElement('p');
+    productNameSecondary.setAttribute('id', 'secondary-name');
+    productNameSecondary.innerText = productDescription.name;
+
+    const productDescriptionSecondary = document.createElement('p')
+    productDescriptionSecondary.setAttribute('id', 'secondary-description')
+    productDescriptionSecondary.innerText = `With its practical position, this ${productDescription.name.toLowerCase()} also fulfills a decorative function, add your hall or workspace.`;
+
+    productDetailContainer.replaceChild(productImageSecondary, imgSecondary);
+    productInfoSecondary.replaceChild(productPriceSecondary, secondaryPrice);
+    productInfoSecondary.replaceChild(productNameSecondary, secondaryName);
+    productInfoSecondary.replaceChild(productDescriptionSecondary, secondaryDescription);
 }
 
 function openProductDetailAside(name){

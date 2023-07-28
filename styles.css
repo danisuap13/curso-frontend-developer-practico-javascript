@@ -263,9 +263,10 @@
   padding-bottom: 24px;
   position: absolute;
   top: 62px;
-  right: 10px;
+  right: 0px;
   background: var(--white);
   border: solid 1px var(--very-light-pink);
+  border-left: solid 2px var(--very-light-pink);
   border-top: none;
   border-radius: 0 0 0 20px;
 }
