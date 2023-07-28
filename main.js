@@ -125,6 +125,11 @@ productList.push ({
     price: 20,
     image: "https://media.istockphoto.com/id/500062008/es/foto/ni%C3%B1o-sentado-en-la-rampa-hacia-abajo-en-monopat%C3%ADn.jpg?s=612x612&w=is&k=20&c=-LTCYPfTPQnrqrFq8KuH7o2Po3SpHg1oD1gI8sFrYfw=",
 });
+productList.push ({
+    category: 'others', name: 'Piano',
+    price: 500,
+    image: "https://images.pexels.com/photos/1021142/pexels-photo-1021142.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+});
 
 renderProducts(productList)
 
