@@ -91,7 +91,6 @@ function renderProducts(arr){
 let totalShoppingCart = [];
 
 function addItemToCart(productName){
-    const shoppingCartTotalContainer = document.querySelector('#total')
     let productDescriptionObject;
     for(item of filteredProductList){
         if(item.name === productName){
@@ -114,7 +113,7 @@ function addItemToCart(productName){
 
     const shoppingCartDelete = document.createElement('img')
     shoppingCartDelete.setAttribute('src', './icons/icon_close.png')
-    shoppingCartDelete.setAttribute('onclick', 'console.log("hola")')
+    shoppingCartDelete.setAttribute('onclick', `deleteShoppingCartItem("${productDescriptionObject.name}")`)
 
     myOrderContent.appendChild(shoppingCartProduct)
     shoppingCartProductFigure.appendChild(shoppingCartProductImg)
@@ -124,13 +123,21 @@ function addItemToCart(productName){
     shoppingCartProduct.appendChild(shoppingCartDelete)
 
     totalShoppingCart.push(productDescriptionObject.price)
-    
+    totalRefreshShoppingCart();
+    refreshShoppingCartIcon();
+}
+
+function totalRefreshShoppingCart(){
+    const shoppingCartTotalContainer = document.querySelector('#total')
     const total = totalShoppingCart.reduce((valorAnterior, valorActual) => valorAnterior + valorActual, 0)
     const displayTotal = document.createElement('p');
     displayTotal.setAttribute('id', 'total')
     displayTotal.innerText = `$${total},00`
     order.replaceChild(displayTotal, shoppingCartTotalContainer);
+}
 
+function refreshShoppingCartIcon(){
+    
     const shoppingCartCounterContainer = document.querySelector('.navbar-shopping-cart')
     const shoppingCartCounter = document.querySelector('.navbar-shopping-cart div');
     const totalItems = `${totalShoppingCart.length}`;
@@ -138,7 +145,18 @@ function addItemToCart(productName){
     totalItemsIcon.innerText = totalItems;
     shoppingCartCounterContainer.replaceChild(totalItemsIcon, shoppingCartCounter)
     totalItemsIcon.setAttribute = ('id', 'shopping-cart-counter')
+}
 
+function deleteShoppingCartItem(productName){
+    const elementToDelete = document.querySelectorAll('.shopping-cart');
+    const arrayElementToDelete = [...elementToDelete];
+    const newArray = arrayElementToDelete.map(element => [... element.childNodes]);
+    console.log(newArray)
+    const eliminar = newArray.findIndex(element => element[1].textContent === productName);
+    arrayElementToDelete[eliminar].remove();
+    totalShoppingCart.splice(eliminar, 1);
+    totalRefreshShoppingCart();
+    refreshShoppingCartIcon();
 }
 
 function renderSecondaryProductDetail(productName){

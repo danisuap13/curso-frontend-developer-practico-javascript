@@ -243,6 +243,17 @@
     font-size: var(--md);
     font-weight: bold;
   }
+
+  .shopping-cart p ~ img {
+    width: 15px;
+    background-color:var(--black);
+    border-radius: 20px;
+  }
+  
+  .shopping-cart p ~ img:hover {
+    width: 20px;
+    cursor: pointer;
+  }
   .primary-button {
     background-color: var(--hospital-green);
     border-radius: 8px;
