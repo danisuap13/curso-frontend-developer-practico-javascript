@@ -52,9 +52,9 @@ function toggleCarritoMenu(){
     shoppingCart.classList.toggle('inactive');    
 }
 
-function renderProducts(arr){
+function renderProducts(renderArray){
 
-    for(product of arr){
+renderArray.forEach(product => {
     const productCard = document.createElement('div');
     productCard.classList.add('product-card');
         
@@ -85,7 +85,7 @@ function renderProducts(arr){
     productInfoDiv.append(productPrice, productName);
     cardsContainer.appendChild(productCard);
    
-    }   
+    });
 }
 
 let totalShoppingCart = [];
