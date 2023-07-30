@@ -40,6 +40,16 @@ function toggleMobileMenu(){
     if(isShoppingCartClosed) shoppingCart.classList.add('inactive');
     mobileMenu.classList.toggle('inactive');
     closeProductDetailAside();
+    verifyOpenMenuMobile();
+}
+
+function verifyOpenMenuMobile(){
+    if(!mainContainer.classList.contains('inactive-mobile') & !mobileMenu.classList.contains('inactive')){
+        mainContainer.classList.add('inactive-mobile')
+    }
+    else{
+        mainContainer.classList.remove('inactive-mobile')
+    }
 }
 
 function toggleCarritoMenu(){
@@ -49,7 +59,8 @@ function toggleCarritoMenu(){
     if(isMobileMenuClosed) mobileMenu.classList.add('inactive');
     if(isDesktopMenuClosed) desktopMenu.classList.add('inactive');
     if(isProductDetailAsideClosed) productDetailContainer.classList.add('inactive');
-    shoppingCart.classList.toggle('inactive');    
+    shoppingCart.classList.toggle('inactive');
+    verifyOpenMenuMobile();
 }
 
 function renderProducts(renderArray){
@@ -191,14 +202,17 @@ function openProductDetailAside(name){
     if(isShoppingCartClosed) shoppingCart.classList.add('inactive');
     productDetailContainer.classList.remove('inactive');
     renderSecondaryProductDetail(name);
+    mainContainer.classList.add('inactive-mobile')
 }
 
 function closeProductDetailAside(){
     productDetailContainer.classList.add('inactive');
+    mainContainer.classList.remove('inactive-mobile');
 }
 
 function closeShoppingCart(){
     shoppingCart.classList.add('inactive');
+    mainContainer.classList.remove('inactive-mobile');
 }
 
 const productList = [];
@@ -242,7 +256,8 @@ renderProducts(productList)
 
 let filteredProductList = [...productList];
 const filterProductList = (categoria) => {
-    if(categoria == 'all' ){
+    
+    if(categoria == 'all'){
         while (cardsContainer.firstChild) {
             cardsContainer.removeChild(cardsContainer.firstChild);
         }
@@ -258,5 +273,6 @@ const filterProductList = (categoria) => {
 const filterProductListMobile = (categoria) => {
     mobileMenu.classList.toggle('inactive');
     filterProductList(categoria);
+    verifyOpenMenuMobile();
 }
 
