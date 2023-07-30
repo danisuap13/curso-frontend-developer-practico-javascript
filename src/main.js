@@ -91,29 +91,24 @@ renderArray.forEach(product => {
 let totalShoppingCart = [];
 
 function addItemToCart(productName){
-    let productDescriptionObject;
-    for(item of filteredProductList){
-        if(item.name === productName){
-            productDescriptionObject = item;
-        }
-    }
-    
+    const [productDescription] = productList.filter(item => item.name === productName)
+        
     const shoppingCartProduct = document.createElement('div');
     shoppingCartProduct.classList.add('shopping-cart');
 
     const shoppingCartProductFigure = document.createElement('figure');
         const shoppingCartProductImg = document.createElement('img');
-        shoppingCartProductImg.setAttribute('src', productDescriptionObject.image)
-        shoppingCartProductImg.setAttribute('alt', productDescriptionObject.name)
+        shoppingCartProductImg.setAttribute('src', productDescription.image)
+        shoppingCartProductImg.setAttribute('alt', productDescription.name)
 
     const shoppingCartName = document.createElement('p');
-    shoppingCartName.innerText = productDescriptionObject.name;
+    shoppingCartName.innerText = productDescription.name;
     const shoppingCartPrice = document.createElement('p');
-    shoppingCartPrice.innerText = `$${productDescriptionObject.price},00`;
+    shoppingCartPrice.innerText = `$${productDescription.price},00`;
 
     const shoppingCartDelete = document.createElement('img')
     shoppingCartDelete.setAttribute('src', './icons/icon_close.png')
-    shoppingCartDelete.setAttribute('onclick', `deleteShoppingCartItem("${productDescriptionObject.name}")`)
+    shoppingCartDelete.setAttribute('onclick', `deleteShoppingCartItem("${productDescription.name}")`)
 
     myOrderContent.appendChild(shoppingCartProduct)
     shoppingCartProductFigure.appendChild(shoppingCartProductImg)
@@ -122,7 +117,7 @@ function addItemToCart(productName){
     shoppingCartProduct.appendChild(shoppingCartPrice)
     shoppingCartProduct.appendChild(shoppingCartDelete)
 
-    totalShoppingCart.push(productDescriptionObject.price)
+    totalShoppingCart.push(productDescription.price)
     totalRefreshShoppingCart();
     refreshShoppingCartIcon();
 }
@@ -151,7 +146,6 @@ function deleteShoppingCartItem(productName){
     const elementToDelete = document.querySelectorAll('.shopping-cart');
     const arrayElementToDelete = [...elementToDelete];
     const newArray = arrayElementToDelete.map(element => [... element.childNodes]);
-    console.log(newArray)
     const eliminar = newArray.findIndex(element => element[1].textContent === productName);
     arrayElementToDelete[eliminar].remove();
     totalShoppingCart.splice(eliminar, 1);
@@ -165,12 +159,8 @@ function renderSecondaryProductDetail(productName){
     const secondaryName = document.querySelector('#secondary-name');
     const secondaryDescription = document.querySelector('#secondary-description');
 
-    let productDescription;
-    for(item of filteredProductList){
-        if(item.name === productName){
-            productDescription = item;
-        }
-    }
+    const [productDescription] = productList.filter(item => item.name === productName)
+
     const productImageSecondary = document.createElement('img');
     productImageSecondary.setAttribute('src', productDescription.image);
     productImageSecondary.setAttribute('alt', `${productDescription.name}`);
